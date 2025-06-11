@@ -11,20 +11,13 @@ interface HeaderProps {
 export const Header: React.FC<HeaderProps> = ({ onAddClass, onAddStudySession }) => {
   return (
     <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-8">
-      <div className="flex items-center gap-3">
-        <img 
-          src="/lovable-uploads/59769ea3-f8bb-42b1-bd95-b500d76f5227.png" 
-          alt="Student Calendar Logo" 
-          className="w-16 h-16 object-contain"
-        />
-        <div>
-          <h1 className="text-3xl sm:text-4xl font-bold bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">
-            📚 Student Calendar
-          </h1>
-          <p className="text-muted-foreground mt-1">
-            Organize your academic life with style
-          </p>
-        </div>
+      <div>
+        <h1 className="text-3xl sm:text-4xl font-bold bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">
+          📚 Student Calendar
+        </h1>
+        <p className="text-muted-foreground mt-1">
+          Organize your academic life with style
+        </p>
       </div>
       
       <div className="flex gap-2">
