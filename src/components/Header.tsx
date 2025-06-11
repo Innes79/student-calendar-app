@@ -13,7 +13,7 @@ export const Header: React.FC<HeaderProps> = ({ onAddClass, onAddStudySession })
     <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-8">
       <div className="flex items-center gap-3">
         <img 
-          src="/lovable-uploads/ee030169-8906-49ee-b55e-5c839aadc54b.png" 
+          src="/lovable-uploads/59769ea3-f8bb-42b1-bd95-b500d76f5227.png" 
           alt="Student Calendar Logo" 
           className="w-16 h-16 object-contain"
         />
