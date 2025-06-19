@@ -4,6 +4,7 @@ import { CalendarView } from '@/components/CalendarView';
 import { Dashboard } from '@/components/Dashboard';
 import { AddClassModal } from '@/components/AddClassModal';
 import { StudySessionModal } from '@/components/StudySessionModal';
+import { ImportExportModal } from '@/components/ImportExportModal';
 import { NavigationTabs } from '@/components/NavigationTabs';
 import { Header } from '@/components/Header';
 import { useLocalStorage } from '@/hooks/useLocalStorage';
@@ -13,6 +14,7 @@ const Index = () => {
   const [activeTab, setActiveTab] = useState<'dashboard' | 'calendar'>('dashboard');
   const [isAddClassOpen, setIsAddClassOpen] = useState(false);
   const [isStudySessionOpen, setIsStudySessionOpen] = useState(false);
+  const [isImportExportOpen, setIsImportExportOpen] = useState(false);
   const [classes, setClasses] = useLocalStorage<Class[]>('student-calendar-classes', []);
   const [studySessions, setStudySessions] = useLocalStorage<StudySession[]>('student-calendar-sessions', []);
 
@@ -36,12 +38,18 @@ const Index = () => {
     setClasses(classes.filter(c => c.id !== classId));
   };
 
+  const handleImportData = (importedClasses: Class[], importedSessions: StudySession[]) => {
+    setClasses(importedClasses);
+    setStudySessions(importedSessions);
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-purple-50 via-blue-50 to-indigo-100">
       <div className="container mx-auto px-4 py-6 max-w-6xl">
         <Header 
           onAddClass={() => setIsAddClassOpen(true)}
           onAddStudySession={() => setIsStudySessionOpen(true)}
+          onOpenImportExport={() => setIsImportExportOpen(true)}
         />
         
         <NavigationTabs 
@@ -79,6 +87,14 @@ const Index = () => {
           onClose={() => setIsStudySessionOpen(false)}
           onAddSession={addStudySession}
           classes={classes}
+        />
+
+        <ImportExportModal
+          isOpen={isImportExportOpen}
+          onClose={() => setIsImportExportOpen(false)}
+          classes={classes}
+          studySessions={studySessions}
+          onImportData={handleImportData}
         />
       </div>
     </div>

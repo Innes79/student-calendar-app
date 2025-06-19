@@ -1,14 +1,15 @@
 
 import React from 'react';
 import { Button } from '@/components/ui/button';
-import { Plus, BookOpen } from 'lucide-react';
+import { Plus, BookOpen, FileDown } from 'lucide-react';
 
 interface HeaderProps {
   onAddClass: () => void;
   onAddStudySession: () => void;
+  onOpenImportExport: () => void;
 }
 
-export const Header: React.FC<HeaderProps> = ({ onAddClass, onAddStudySession }) => {
+export const Header: React.FC<HeaderProps> = ({ onAddClass, onAddStudySession, onOpenImportExport }) => {
   return (
     <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-8">
       <div>
@@ -20,7 +21,15 @@ export const Header: React.FC<HeaderProps> = ({ onAddClass, onAddStudySession })
         </p>
       </div>
       
-      <div className="flex gap-2">
+      <div className="flex gap-2 flex-wrap">
+        <Button 
+          onClick={onOpenImportExport}
+          variant="outline"
+          className="flex items-center gap-2 hover:bg-gray-50 hover:border-gray-300 transition-colors"
+        >
+          <FileDown className="w-4 h-4" />
+          Import/Export
+        </Button>
         <Button 
           onClick={onAddStudySession}
           variant="outline"
